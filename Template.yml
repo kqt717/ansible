@@ -1,0 +1,15 @@
+- name: install mongodb
+  hosts: 172.16.128.16
+  user: root
+  gather_facts: true
+
+  tasks:
+  - name: copy file to client
+    copy: src=/root/mongodb dest=/root/
+
+  - name: install zabbix client
+    shell: sh /root/mongodb/mongodb.sh
+
+  - name: delete the install file
+    shell: rm -rf /root/mongodb
+
